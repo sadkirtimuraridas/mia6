@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Internet Services</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        .viewer {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .viewer-header {
+            height: 65px;
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .viewer-header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            flex: 1;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="viewer">
+
+        <div class="viewer-header">
+            <h1>Internet Services</h1>
+        </div>
+
+        <iframe
+            class="pdf-viewer"
+            src="../pdf/grade-6/computer/internet-services.pdf">
+        </iframe>
+
+    </div>
+
+</body>
+</html>
