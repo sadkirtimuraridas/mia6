@@ -1,10 +1,45 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Subject | LearnTech Academy</title><link rel="stylesheet" href="../css/style.css"></head><body>
-<header class="site-header"><div class="container nav-wrap"><a class="logo" href="../index.html"><span class="logo-mark">LT</span><span>LearnTech<span class="logo-accent"> Academy</span></span></a><button class="menu-toggle">☰</button><nav class="main-nav"><a href="../index.html">Home</a><a href="../index.html#grades">Grades</a><a href="notes.html">Notes</a><a href="questions.html">Q&A</a><a href="videos.html">Videos</a></nav></div></header>
-<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home → <span id="crumb"></span></div><h1 id="title"></h1><p>Open a chapter to access notes, Q&A, files and videos.</p></div></section><section class="section"><div class="container"><div class="chapter-grid" id="chapters"></div></div></section></main>
-<footer class="site-footer"><div class="footer-bottom">© 2026 LearnTech Academy</div></footer>
-<script>
-const p=new URLSearchParams(location.search),g=p.get("grade")||"4",s=p.get("subject")||"Computer";
-const data={"4": {"Computer": ["Introduction to Computers", "Parts of a Computer", "Keyboard & Mouse"], "Artificial Intelligence": ["What is AI?", "AI Around Us"]}, "5": {"Computer": ["Computer Hardware", "Computer Software", "Files & Folders"], "Artificial Intelligence": ["AI in Everyday Life", "Smart Machines"]}, "6": {"Computer": ["Computer Fundamentals", "Operating Systems", "Internet Basics"], "Artificial Intelligence": ["Introduction to AI", "Data and AI"]}, "7": {"Computer": ["Networks", "Internet Safety", "Word Processing"], "Artificial Intelligence": ["Machine Learning Basics", "AI Applications"]}, "8": {"Computer": ["Programming Basics", "Web Technologies", "Cyber Safety"], "Artificial Intelligence": ["Machine Learning", "Computer Vision"]}, "9": {"Computer": ["Advanced Programming", "Database Basics", "Digital Citizenship"], "Artificial Intelligence": ["AI & Society", "Natural Language Processing"]}};
-document.getElementById("title").textContent=`Grade ${g} — ${s}`;document.getElementById("crumb").textContent=`Grade ${g} → ${s}`;
-document.getElementById("chapters").innerHTML=(data[g]?.[s]||[]).map((c,i)=>`<article class="chapter-card"><h3>Chapter ${i+1}</h3><h3>${c}</h3><p>Study notes, questions & answers, downloadable files and lesson videos.</p><div class="chapter-links"><a href="#">📚 Notes</a><a href="#">❓ Q&A</a><a href="#">📄 Files</a><a href="#">▶ Video</a></div></article>`).join("");
-</script><script src="../js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject | LearnTech</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap"><a class="logo" href="../index.html"><span
+                    class="logo-mark">LT</span><span>LearnTech</span></a><button class="menu-toggle">☰</button>
+            <nav class="main-nav"><a href="../index.html">Home</a><a href="../index.html#grades">Grades</a><a
+                    href="notes.html">Notes</a><a href="questions.html">Q&A</a><a href="videos.html">Videos</a></nav>
+        </div>
+    </header>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumbs">Home → <span id="crumb"></span></div>
+                <h1 id="title"></h1>
+                <p>Open a chapter to access notes, Q&A, files and videos.</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="chapter-grid" id="chapters"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-bottom">© 2026 LearnTech</div>
+    </footer>
+    <script>
+        const p = new URLSearchParams(location.search), g = p.get("grade") || "4", s = p.get("subject") || "Computer";
+        const data = { "4": { "Computer": ["Introduction to Computers", "Parts of a Computer", "Keyboard & Mouse"], "Artificial Intelligence": ["What is AI?", "AI Around Us"] }, "5": { "Computer": ["Computer Hardware", "Computer Software", "Files & Folders"], "Artificial Intelligence": ["AI in Everyday Life", "Smart Machines"] }, "6": { "Computer": ["Computer Fundamentals", "Operating Systems", "Internet Basics"], "Artificial Intelligence": ["Introduction to AI", "Data and AI"] }, "7": { "Computer": ["Networks", "Internet Safety", "Word Processing"], "Artificial Intelligence": ["Machine Learning Basics", "AI Applications"] }, "8": { "Computer": ["Programming Basics", "Web Technologies", "Cyber Safety"], "Artificial Intelligence": ["Machine Learning", "Computer Vision"] }, "9": { "Computer": ["Advanced Programming", "Database Basics", "Digital Citizenship"], "Artificial Intelligence": ["AI & Society", "Natural Language Processing"] } };
+        document.getElementById("title").textContent = `Grade ${g} — ${s}`; document.getElementById("crumb").textContent = `Grade ${g} → ${s}`;
+        document.getElementById("chapters").innerHTML = (data[g]?.[s] || []).map((c, i) => `<article class="chapter-card"><h3>Chapter ${i + 1}</h3><h3>${c}</h3><p>Study notes, questions & answers, downloadable files and lesson videos.</p><div class="chapter-links"><a href="#">📚 Notes</a><a href="#">❓ Q&A</a><a href="#">📄 Files</a><a href="#">▶ Video</a></div></article>`).join("");
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

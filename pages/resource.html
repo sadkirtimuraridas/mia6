@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Internet Services</title>
+    <title>Learning Resource</title>
 
     <style>
         * {
@@ -19,18 +20,23 @@
 
         .viewer {
             width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            min-height: 100vh;
         }
 
         .viewer-header {
             height: 65px;
             background: #ffffff;
             border-bottom: 1px solid #ddd;
+
             display: flex;
             align-items: center;
+
             padding: 0 25px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 10;
         }
 
         .viewer-header h1 {
@@ -38,10 +44,49 @@
             margin: 0;
         }
 
+        .resource-container {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 20px;
+        }
+
+        /* Images */
+
+        .image-viewer {
+            width: 100%;
+            max-width: 1000px;
+
+            height: auto;
+
+            display: block;
+
+            background: white;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* PDF */
+
         .pdf-viewer {
             width: 100%;
-            flex: 1;
+            height: calc(100vh - 85px);
+
             border: none;
+        }
+
+        .error {
+            padding: 40px;
+
+            text-align: center;
+
+            color: #555;
         }
     </style>
 </head>
@@ -51,15 +96,148 @@
     <div class="viewer">
 
         <div class="viewer-header">
-            <h1>Internet Services</h1>
+            <h1 id="resource-title">
+                Learning Resource
+            </h1>
         </div>
 
-        <iframe
-            class="pdf-viewer"
-            src="../pdf/grade-6/computer/internet-services.pdf">
-        </iframe>
+        <div
+            class="resource-container"
+            id="resource-container">
+        </div>
 
     </div>
 
+
+    <script>
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const files =
+            params.get("files");
+
+        const container =
+            document.getElementById("resource-container");
+
+        const title =
+            document.getElementById("resource-title");
+
+
+        /*
+        -----------------------------------
+        CHECK IF FILES EXIST
+        -----------------------------------
+        */
+
+        if (!files) {
+
+            container.innerHTML = `
+                <div class="error">
+                    <h2>No resource found</h2>
+                    <p>Please select a resource to view.</p>
+                </div>
+            `;
+
+        }
+
+        else {
+
+            /*
+            -----------------------------------
+            CONVERT URL INTO ARRAY
+            -----------------------------------
+            */
+
+            const fileList =
+                files.split(",");
+
+
+            /*
+            -----------------------------------
+            DISPLAY FILES
+            -----------------------------------
+            */
+
+            fileList.forEach((file, index) => {
+
+                const filename =
+                    file.split("/").pop();
+
+
+                const extension =
+                    filename
+                        .split(".")
+                        .pop()
+                        .toLowerCase();
+
+
+                /*
+                -------------------------------
+                IMAGE
+                -------------------------------
+                */
+
+                if (
+                    extension === "jpg" ||
+                    extension === "jpeg" ||
+                    extension === "png" ||
+                    extension === "webp" ||
+                    extension === "gif"
+                ) {
+
+                    const img =
+                        document.createElement("img");
+
+                    img.className =
+                        "image-viewer";
+
+                    img.src = file;
+
+                    img.alt =
+                        `Page ${index + 1}`;
+
+                    container.appendChild(img);
+
+                }
+
+
+                /*
+                -------------------------------
+                PDF
+                -------------------------------
+                */
+
+                else if (extension === "pdf") {
+
+                    const iframe =
+                        document.createElement("iframe");
+
+                    iframe.className =
+                        "pdf-viewer";
+
+                    iframe.src = file;
+
+                    container.appendChild(iframe);
+
+                }
+
+            });
+
+
+            /*
+            -----------------------------------
+            TITLE
+            -----------------------------------
+            */
+
+            title.textContent =
+                "Control Statements in Python";
+
+        }
+
+    </script>
+
 </body>
+
 </html>

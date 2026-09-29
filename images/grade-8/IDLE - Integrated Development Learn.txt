@@ -1,0 +1,3 @@
+IDLE - Integrated Development Learning Environment
+Terminal / Shell / Bash
+# Comment - It is not displayed
