@@ -111,132 +111,132 @@
 
     <script>
 
-        const params =
-            new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
 
-        const files =
-            params.get("files");
+    const files = params.get("files");
 
-        const container =
-            document.getElementById("resource-container");
-
-        const title =
-            document.getElementById("resource-title");
+    const container = document.getElementById("resource-container");
+    const title = document.getElementById("resource-title");
 
 
-        /*
-        -----------------------------------
-        CHECK IF FILES EXIST
-        -----------------------------------
-        */
+    if (!files) {
 
-        if (!files) {
+        container.innerHTML = `
+            <div class="error">
+                <h2>No resource found</h2>
+                <p>Please select a resource to view.</p>
+            </div>
+        `;
 
-            container.innerHTML = `
-                <div class="error">
-                    <h2>No resource found</h2>
-                    <p>Please select a resource to view.</p>
-                </div>
-            `;
+    } else {
 
-        }
+        const fileList = files.split(",");
 
-        else {
+        fileList.forEach((file, index) => {
 
-            /*
-            -----------------------------------
-            CONVERT URL INTO ARRAY
-            -----------------------------------
-            */
+            const filename = file.split("/").pop();
 
-            const fileList =
-                files.split(",");
+            const extension = filename
+                .split(".")
+                .pop()
+                .toLowerCase();
 
 
             /*
-            -----------------------------------
-            DISPLAY FILES
-            -----------------------------------
+            -------------------------------
+            IMAGE
+            -------------------------------
             */
 
-            fileList.forEach((file, index) => {
+            if (
+                extension === "jpg" ||
+                extension === "jpeg" ||
+                extension === "png" ||
+                extension === "webp" ||
+                extension === "gif"
+            ) {
 
-                const filename =
-                    file.split("/").pop();
+                const img = document.createElement("img");
 
+                img.className = "image-viewer";
 
-                const extension =
-                    filename
-                        .split(".")
-                        .pop()
-                        .toLowerCase();
+                img.src = file;
 
+                img.alt = `Page ${index + 1}`;
 
-                /*
-                -------------------------------
-                IMAGE
-                -------------------------------
-                */
+                container.appendChild(img);
 
-                if (
-                    extension === "jpg" ||
-                    extension === "jpeg" ||
-                    extension === "png" ||
-                    extension === "webp" ||
-                    extension === "gif"
-                ) {
-
-                    const img =
-                        document.createElement("img");
-
-                    img.className =
-                        "image-viewer";
-
-                    img.src = file;
-
-                    img.alt =
-                        `Page ${index + 1}`;
-
-                    container.appendChild(img);
-
-                }
-
-
-                /*
-                -------------------------------
-                PDF
-                -------------------------------
-                */
-
-                else if (extension === "pdf") {
-
-                    const iframe =
-                        document.createElement("iframe");
-
-                    iframe.className =
-                        "pdf-viewer";
-
-                    iframe.src = file;
-
-                    container.appendChild(iframe);
-
-                }
-
-            });
+            }
 
 
             /*
-            -----------------------------------
-            TITLE
-            -----------------------------------
+            -------------------------------
+            PDF
+            -------------------------------
             */
 
-            title.textContent =
-                "Control Statements in Python";
+            else if (extension === "pdf") {
 
-        }
+                const iframe = document.createElement("iframe");
 
-    </script>
+                iframe.className = "pdf-viewer";
+
+                iframe.src = file;
+
+                container.appendChild(iframe);
+
+            }
+
+
+            /*
+            -------------------------------
+            TEXT FILE
+            -------------------------------
+            */
+
+            else if (extension === "txt") {
+
+                const textViewer = document.createElement("pre");
+
+                textViewer.className = "text-viewer";
+
+                textViewer.textContent = "Loading...";
+
+                container.appendChild(textViewer);
+
+
+                fetch(file)
+                    .then(response => {
+
+                        if (!response.ok) {
+                            throw new Error("Unable to load file");
+                        }
+
+                        return response.text();
+
+                    })
+                    .then(text => {
+
+                        textViewer.textContent = text;
+
+                    })
+                    .catch(error => {
+
+                        textViewer.textContent =
+                            "Unable to load this text file.";
+
+                    });
+
+            }
+
+        });
+
+
+        title.textContent = "Learning Resource";
+
+    }
+
+</script>
 
 </body>
 

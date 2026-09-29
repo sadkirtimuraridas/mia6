@@ -713,3 +713,34 @@ a {
     height: auto;
     display: block;
 }
+
+/* Text Files */
+
+.text-viewer {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border-radius: 8px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    overflow-x: auto;
+
+    overflow-y: auto;
+
+    text-align: left;
+}

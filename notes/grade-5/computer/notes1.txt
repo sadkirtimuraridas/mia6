@@ -1,0 +1,71 @@
+CH-7 {E-MAIL AND MALWARE SAFETY}
+
+SNAIL MAIL
+
+The system of sending and receiving physical letters through postal services.
+
+WHAT IS E-MAIL?
+
+E-mail stands for Electronic Mail. It is used to send and receive messages electronically over the Internet. E-mails can be sent to people in different places very quickly.
+
+PARTS OF AN E-MAIL
+
+Compose – Create a new e-mail.
+
+From – The sender's e-mail address.
+
+To – The e-mail address of the main recipient or recipients.
+
+Subject – A brief title or topic of the e-mail.
+
+CC – Carbon Copy. It is used to send a copy of the e-mail to additional recipients.
+
+BCC – Blind Carbon Copy. It is used to send a copy of the e-mail without showing the BCC recipients to other recipients.
+
+Message – The main content or text of the e-mail.
+
+Attachment – A file attached to an e-mail, such as an image, document, video, or PDF.
+
+Send – Send the e-mail to the recipient(s).
+
+Reply – Respond to an e-mail that has been received.
+
+Forward – Send a received e-mail to another person.
+
+E-MAIL FOLDERS
+
+Inbox – Contains e-mails that have been received.
+
+Sent – Contains e-mails that have been sent.
+
+Drafts – Contains e-mails that have been written but saved to be sent later.
+
+Spam – Contains unwanted or unsolicited e-mails, often sent in large numbers.
+
+MALWARE
+
+Malware stands for Malicious Software. It is software designed to harm a computer, steal information, or perform other unwanted activities.
+
+TYPES OF MALWARE
+
+Virus – A malicious program that can attach itself to files and spread when the infected file is opened.
+
+Worm – Malware that can spread automatically from one computer to another, often through a network.
+
+Trojan Horse – A malicious program that pretends to be legitimate or useful software.
+
+Spyware – Malware that secretly collects information about a user or their activities.
+
+Ransomware – Malware that locks or encrypts files and demands payment from the victim.
+
+E-MAIL AND MALWARE SAFETY
+
+- Do not open attachments from unknown or suspicious senders.
+- Do not click on suspicious links in e-mails.
+- Check the sender's e-mail address carefully.
+- Do not share passwords or other personal information through suspicious e-mails.
+- Use reliable antivirus or security software.
+- Keep the operating system and software updated.
+- Use strong and unique passwords.
+- Be careful of e-mails asking for urgent payments or personal information.
+- If an e-mail looks suspicious, delete it or report it as spam.
