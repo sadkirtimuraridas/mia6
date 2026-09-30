@@ -1,0 +1,19 @@
+CHAPTER 9
+ALGORITHM
+
+Algorithm – It is a step-by-step set of instructions used to solve a problem or perform a task.
+
+Characteristics of Algorithms
+Precision – Every step should be precisely defined.
+Uniqueness – Every step should be uniquely defined and unambiguous.
+Finiteness – An algorithm should have a finite number of steps.
+Well-defined Input – The input should be clearly defined.
+Well-defined Output – The output should be clearly defined.
+Effectiveness – The algorithm should be efficient in terms of time and space.
+Algorithm to Calculate the Sum of Two Numbers
+
+Step 1 – Start
+Step 2 – Read two numbers and store them in A and B.
+Step 3 – Calculate A + B.
+Step 4 – Print the result as the sum.
+Step 5 – Stop
