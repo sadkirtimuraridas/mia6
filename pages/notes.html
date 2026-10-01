@@ -28,22 +28,22 @@
         <section class="section">
             <div class="container">
                 <div class="filter-row">
-    <select id="gradeFilter">
-        <option value="all">All Grades</option>
-        <option value="4">Grade 4</option>
-        <option value="5">Grade 5</option>
-        <option value="6">Grade 6</option>
-        <option value="7">Grade 7</option>
-        <option value="8">Grade 8</option>
-        <option value="9">Grade 9</option>
-    </select>
+                    <select id="gradeFilter">
+                        <option value="all">All Grades</option>
+                        <option value="4">Grade 4</option>
+                        <option value="5">Grade 5</option>
+                        <option value="6">Grade 6</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                    </select>
 
-    <select id="subjectFilter">
-        <option value="all">All Subjects</option>
-        <option value="computer">Computer</option>
-        <option value="ai">Artificial Intelligence</option>
-    </select>
-</div>
+                    <select id="subjectFilter">
+                        <option value="all">All Subjects</option>
+                        <option value="computer">Computer</option>
+                        <option value="ai">Artificial Intelligence</option>
+                    </select>
+                </div>
 
 
                 <div class="chapter-grid">
@@ -52,7 +52,7 @@
 
 
 
-<article class="chapter-card" data-grade="5" data-subject="computer">
+                    <article class="chapter-card" data-grade="5" data-subject="computer">
                         <h3>Grade 5 • Computer</h3>
                         <h3>E-mail & Malware Safety</h3>
                         <p>Chapter 7</p>
@@ -87,20 +87,26 @@
 
                     </article>
 
-                        <!-- GRADE 7 -->
+                    <!-- GRADE 7 -->
                     <article class="chapter-card" data-grade="7" data-subject="computer">
                         <h3>Grade 7 • Computer</h3>
-                        <h3>Control Statements in Python</h3>
+                        <h4>Control Statements in Python</h4>
                         <p>Chapter 5</p>
-
                         <div class="chapter-links">
-
-
                             <a
                                 href="resource.html?files=../images/grade-7/py_1.png,../images/grade-8/1.png,../images/grade-8/2.png,../images/grade-8/3.png,../images/grade-8/4.png,../images/grade-8/5.png">
                                 Open Resource →
                             </a>
                         </div>
+                        <br>
+                        <h4>Control Statements in Python
+                        </h4>
+                        <p>Chapter 5</p>
+                        <div class="chapter-links">
+                            <a href="resource.html?files=../notes/grade-7/computer/notesOct1.txt">
+                                Open Resource →
+                            </a>
+
                     </article>
 
 
@@ -131,14 +137,14 @@
     </footer>
     <script src="../js/main.js"></script>
 
-<script>
-const gradeFilter=document.getElementById("gradeFilter");
-const subjectFilter=document.getElementById("subjectFilter");
-const chapterCards=document.querySelectorAll(".chapter-card");
-function filterChapters(){const g=gradeFilter.value,s=subjectFilter.value;chapterCards.forEach(card=>{const gm=g==="all"||card.dataset.grade===g;const sm=s==="all"||card.dataset.subject===s;card.style.display=gm&&sm?"":"none";});}
-gradeFilter.addEventListener("change",filterChapters);
-subjectFilter.addEventListener("change",filterChapters);
-</script>
+    <script>
+        const gradeFilter = document.getElementById("gradeFilter");
+        const subjectFilter = document.getElementById("subjectFilter");
+        const chapterCards = document.querySelectorAll(".chapter-card");
+        function filterChapters() { const g = gradeFilter.value, s = subjectFilter.value; chapterCards.forEach(card => { const gm = g === "all" || card.dataset.grade === g; const sm = s === "all" || card.dataset.subject === s; card.style.display = gm && sm ? "" : "none"; }); }
+        gradeFilter.addEventListener("change", filterChapters);
+        subjectFilter.addEventListener("change", filterChapters);
+    </script>
 </body>
 
 </html>

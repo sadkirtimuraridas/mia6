@@ -1,0 +1,79 @@
+Python Basics
+
+Variables
+
+Variables are containers used for storing data values.
+
+Types of Brackets
+
+() – Parentheses or Round Brackets
+
+[] – Square Brackets or Box Brackets
+
+{} – Curly Braces or Braces
+
+<> – Angle Brackets or Chevrons
+
+print()
+
+print() is a function used to display output on the screen.
+
+Terminal / Bash / PowerShell
+
+Terminal – A program or interface used to interact with the computer using commands.
+
+Bash – A command-line shell commonly used on Linux and macOS.
+
+PowerShell – A command-line shell and scripting environment developed by Microsoft.
+
+Python File Extension
+
+A Python file is saved with the .py file extension.
+
+String
+
+A String is a sequence of characters, such as words, letters, numbers, or symbols.
+
+Character
+
+A Character is a single letter, number, symbol, or space.
+
+Ampersand
+
+& – Ampersand
+
+Common Data Type Abbreviations
+
+str – String → Text or a sequence of characters
+
+var – Variable
+
+char – Character
+
+int – Integer → A whole number
+
+Note: var and char are commonly used terms, but they are not Python data types. Python does not have a separate char data type; a single character is stored as a str.
+
+Comments
+
+# – Hash or Sharp symbol
+
+A # is used to write a comment in Python. Comments are ignored by the Python interpreter.
+
+Example:
+
+a = 5  # Initialized the value 5 to the variable a
+
+Here, the value 5 is assigned to the variable a.
+
+Operators
+
+Operators are symbols used to perform operations on values.
+
++ – Addition
+
+- – Subtraction
+
+* – Multiplication
+
+/ – Division

@@ -1,4 +1,4 @@
-# LearnTech Academy
+# LearnTech
 
 Static HTML/CSS/JS starter for Grades 4–9, Computer and Artificial Intelligence.
 
