@@ -8,15 +8,8 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
-    <header class="site-header">
-        <div class="container nav-wrap"><a class="logo" href="../index.html"><span
-                    class="logo-mark">LT</span><span>LearnTech</span></a><button class="menu-toggle">☰</button>
-            <nav class="main-nav"><a href="../index.html">Home</a><a href="../index.html#grades">Grades</a><a
-                    href="notes.html">Notes</a><a href="questions.html">Q&A</a><a href="videos.html">Videos</a><a
-                    href="downloads.html">Downloads</a></nav>
-        </div>
-    </header>
+<body data-header="../component/header.html">
+    <div id="header"></div>
     <main>
         <section class="page-hero">
             <div class="container">
@@ -30,12 +23,12 @@
                 <div class="filter-row">
                     <select id="gradeFilter">
                         <option value="all">All Grades</option>
+                        <option value="4">Grade 3</option>
                         <option value="4">Grade 4</option>
                         <option value="5">Grade 5</option>
                         <option value="6">Grade 6</option>
                         <option value="7">Grade 7</option>
                         <option value="8">Grade 8</option>
-                        <option value="9">Grade 9</option>
                     </select>
 
                     <select id="subjectFilter">
@@ -54,16 +47,23 @@
 
                     <article class="chapter-card" data-grade="5" data-subject="computer">
                         <h3>Grade 5 • Computer</h3>
-                        <h3>E-mail & Malware Safety</h3>
+
+                        <h4>E-mail & Malware Safety</h4>
                         <p>Chapter 7</p>
-
                         <div class="chapter-links">
-
-
                             <a href="resource.html?files=../notes/grade-5/computer/notes1.txt">
                                 Open Resource →
                             </a>
                         </div>
+
+                        <h4>Data Processing</h4>
+                        <p>Chapter 8</p>
+                        <div class="chapter-links">
+                            <a href="resource.html?files=../notes/grade-5/computer/">
+                                Open Resource →
+                            </a>
+                        </div>
+
                     </article>
 
                     <!-- GRADE 6 -->
@@ -81,7 +81,7 @@
                         <h4>Algorithm, Flowchart & Mind Maps</h4>
                         <p>Chapter 9</p>
                         <div class="chapter-links">
-                            <a href="resource.html?files=../notes/grade-6/computer/notes30sep2026.txt">
+                            <a href="resource.html?files=../notes/grade-6/computer/notes30sep2026.txt,../images/grade-6/Common Flowchart Symbols Guide.png,../images/grade-6/Find_Bigger_Number.webp">
                                 Open Resource →
                             </a>
 
@@ -136,6 +136,7 @@
         <div class="footer-bottom">© 2026 LearnTech</div>
     </footer>
     <script src="../js/main.js"></script>
+    
 
     <script>
         const gradeFilter = document.getElementById("gradeFilter");
@@ -145,6 +146,8 @@
         gradeFilter.addEventListener("change", filterChapters);
         subjectFilter.addEventListener("change", filterChapters);
     </script>
+    <script src="./js/header.js"></script>
+    <script src="../js/header.js"></script>
 </body>
 
 </html>

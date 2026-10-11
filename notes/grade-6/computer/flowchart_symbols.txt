@@ -1,0 +1,29 @@
+FLOWCHART SYMBOLS
+
+1. Terminal / Terminator
+   Shape: Oval (Ellipse)
+   Purpose: Indicates the Start or Stop/End of a flowchart.
+
+2. Input / Output
+   Shape: Parallelogram
+   Purpose: Used to enter data or display results.
+
+3. Process
+   Shape: Rectangle
+   Purpose: Represents an action, instruction, or calculation.
+
+4. Decision
+   Shape: Diamond
+   Purpose: Represents a condition with branches, such as Yes/No or True/False.
+
+5. On-page connector
+   Shape: Circle
+   Purpose: Connects different parts of a flowchart on the same page.
+
+6. Off-page connector
+   Shape: Pentagon (usually home-plate shaped)
+   Purpose: Indicates that the flowchart continues on another page.
+
+7. Flowline / Flow line
+   Shape: Line with an arrowhead
+   Purpose: Shows the direction and sequence of steps.
