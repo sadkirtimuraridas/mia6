@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Notes - Control Structures in Python</title>
+  <style>
+    :root {
+      --primary: #2457a7;
+      --primary-light: #eaf1ff;
+      --accent: #0f766e;
+      --text: #202938;
+      --muted: #5b6575;
+      --border: #d9e0ea;
+      --surface: #ffffff;
+      --background: #f4f7fb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--background);
+    }
+    header {
+      padding: 38px 20px;
+      color: white;
+      background: linear-gradient(135deg, #173b78, #3676cf);
+    }
+    header .inner, main, footer { max-width: 1000px; margin: 0 auto; }
+    header h1 { margin: 0 0 8px; line-height: 1.2; }
+    header p { margin: 0; opacity: .92; }
+    main { padding: 24px 16px 50px; }
+    nav {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 22px;
+    }
+    nav strong { display: block; margin-bottom: 8px; }
+    nav ul { margin: 0; padding-left: 22px; columns: 2; }
+    nav a { color: var(--primary); text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin: 18px 0;
+      scroll-margin-top: 12px;
+    }
+    h2 { margin-top: 0; color: var(--primary); }
+    h3 { margin-bottom: 8px; }
+    .callout {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 12px 15px;
+      border-radius: 6px;
+      margin: 14px 0;
+    }
+    .tip {
+      background: #e8f7f3;
+      border-left: 4px solid var(--accent);
+      padding: 12px 15px;
+      border-radius: 6px;
+      margin: 14px 0;
+    }
+    pre {
+      background: #101827;
+      color: #e6edf7;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.5;
+      font-size: .93rem;
+    }
+    code { font-family: Consolas, "Courier New", monospace; }
+    :not(pre) > code {
+      background: #eef2f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+    th, td { border: 1px solid var(--border); padding: 10px; text-align: left; vertical-align: top; }
+    th { background: #edf2fa; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .mini-card { border: 1px solid var(--border); border-radius: 9px; padding: 14px; }
+    .mini-card h3 { margin-top: 0; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
+    button {
+      border: 0; border-radius: 7px; padding: 10px 15px; cursor: pointer;
+      color: white; background: var(--primary); font-size: 1rem;
+    }
+    button.secondary { background: #465365; }
+    button:hover { filter: brightness(.94); }
+    .question { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: 0; }
+    .question p { font-weight: 700; margin: 0 0 8px; }
+    .options { display: grid; gap: 7px; }
+    .options label { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+    .feedback { margin-top: 8px; font-weight: 700; }
+    .correct { color: #087443; }
+    .incorrect { color: #b42318; }
+    footer { padding: 0 16px 30px; color: var(--muted); text-align: center; }
+    @media (max-width: 700px) {
+      header { padding: 28px 16px; }
+      nav ul { columns: 1; }
+      section { padding: 17px; }
+      .grid { grid-template-columns: 1fr; }
+      table { font-size: .92rem; }
+      th, td { padding: 8px; }
+    }
+    @media print {
+      body { background: white; }
+      header { background: white; color: black; padding: 10px 0; }
+      nav, .actions, #quiz button { display: none !important; }
+      section { border: 0; padding: 8px 0; break-inside: avoid; }
+      pre { white-space: pre-wrap; color: black; background: #f2f2f2; }
+      footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <h1>Control Structures in Python</h1>
+      <p>Exam Notes · Chapter 7</p>
+    </div>
+  </header>
+
+  <main>
+    <nav aria-label="Table of contents">
+      <strong>Contents</strong>
+      <ul>
+        <li><a href="#control">1. Control Structure</a></li>
+        <li><a href="#sequential">2. Sequential Statements</a></li>
+        <li><a href="#selection">3. Selection Statements</a></li>
+        <li><a href="#loops">4. Iterative Statements</a></li>
+        <li><a href="#jump">5. Jump Statements</a></li>
+        <li><a href="#programs">6. Important Programs</a></li>
+        <li><a href="#syntax">7. Syntax to Memorise</a></li>
+        <li><a href="#revision">8. Quick Revision Q&amp;A</a></li>
+        <li><a href="#quiz">9. MCQ Practice</a></li>
+      </ul>
+    </nav>
+
+    <section id="control">
+      <h2>1. Control Structure</h2>
+      <p>A <strong>control structure</strong> is a programming construct that affects the flow of execution of a program.</p>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Sequential statements</h3>
+          <p>Statements execute one after another in the order in which they appear.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Selection statements</h3>
+          <p>Statements allow a program to make decisions based on conditions.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Iterative statements</h3>
+          <p>Statements repeat a task based on a given condition. They are also called looping statements.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sequential">
+      <h2>2. Sequential Statements</h2>
+      <p>Sequential statements are executed one after another without any jump.</p>
+      <pre><code>print("Hello")
+print("Welcome")
+print("Python")</code></pre>
+      <p><strong>Output:</strong></p>
+      <pre><code>Hello
+Welcome
+Python</code></pre>
+    </section>
+
+    <section id="selection">
+      <h2>3. Selection Statements</h2>
+      <p>Selection statements are used when a program must choose which statements to execute based on a condition.</p>
+
+      <h3>A. The <code>if</code> statement</h3>
+      <p>The <code>if</code> statement executes a block of code only when the given condition is true.</p>
+      <pre><code>if condition:
+    statement(s)</code></pre>
+      <p><strong>Example:</strong></p>
+      <pre><code>num = int(input("Enter a number: "))
+
+if num &gt; 0:
+    print("Positive number")</code></pre>
+      <p>If the user enters <code>15</code>, the output is <code>Positive number</code>. If the condition is false, the statements inside the <code>if</code> block are not executed.</p>
+
+      <h3>B. The <code>if-else</code> statement</h3>
+      <p>If the condition is true, the <code>if</code> block executes; otherwise, the <code>else</code> block executes.</p>
+      <pre><code>if condition:
+    statement(s)
+else:
+    statement(s)</code></pre>
+      <p><strong>Example: Finding the greater of two numbers</strong></p>
+      <pre><code>a = int(input("Enter the first number: "))
+b = int(input("Enter the second number: "))
+
+if a &gt; b:
+    print("First number is greater")
+else:
+    print("Second number is greater")</code></pre>
+
+      <h3>C. The <code>if-elif-else</code> statement</h3>
+      <p>It evaluates multiple conditions and executes the block corresponding to the first true condition. If none is true, the <code>else</code> block executes.</p>
+      <pre><code>if condition1:
+    statement(s)
+elif condition2:
+    statement(s)
+elif condition3:
+    statement(s)
+else:
+    statement(s)</code></pre>
+      <p><strong>Example: Grading a student according to marks</strong></p>
+      <pre><code>marks = int(input("Enter marks: "))
+
+if marks &gt;= 90:
+    print("Grade A+")
+elif marks &gt;= 80:
+    print("Grade A")
+elif marks &gt;= 70:
+    print("Grade B")
+elif marks &gt;= 60:
+    print("Grade C")
+elif marks &gt;= 50:
+    print("Grade D")
+else:
+    print("You need to work hard!")</code></pre>
+      <p>For an input of <code>84</code>, the output is <code>Grade A</code>.</p>
+
+      <h3>D. Nested <code>if</code> statement</h3>
+      <p>A nested <code>if</code> statement means an <code>if</code> statement is placed inside another <code>if</code> statement.</p>
+      <pre><code>if condition1:
+    if condition2:
+        statement(s)</code></pre>
+      <p><strong>Example:</strong></p>
+      <pre><code>num = 10
+
+if num &gt; 0:
+    if num &lt; 20:
+        print("Number is between 0 and 20")</code></pre>
+    </section>
+
+    <section id="loops">
+      <h2>4. Iterative Statements (Loops)</h2>
+      <p>Iterative statements repeat a block of statements based on a given condition. Python provides the <code>for</code> loop and the <code>while</code> loop.</p>
+
+      <h3>A. The <code>for</code> loop</h3>
+      <p>A <code>for</code> loop repeats a set of statements a specified number of times or iterates over a sequence such as a list, string, or tuple.</p>
+      <pre><code>for variable in range(start, stop, step):
+    statement(s)</code></pre>
+      <table>
+        <thead><tr><th>Parameter</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>start</code></td><td>Starting number; default is <code>0</code>.</td></tr>
+          <tr><td><code>stop</code></td><td>Ending limit; this value is excluded.</td></tr>
+          <tr><td><code>step</code></td><td>Increment or decrement between numbers; default is <code>1</code>.</td></tr>
+        </tbody>
+      </table>
+      <p>The <code>range()</code> function generates a sequence of numbers.</p>
+
+      <h3>Example 1: Using only the stop value</h3>
+      <pre><code>for i in range(5):
+    print(i)</code></pre>
+      <pre><code>0
+1
+2
+3
+4</code></pre>
+
+      <h3>Example 2: Using start and stop values</h3>
+      <pre><code>for i in range(3, 7):
+    print(i)</code></pre>
+      <pre><code>3
+4
+5
+6</code></pre>
+
+      <h3>Example 3: Using start, stop and step values</h3>
+      <pre><code>for i in range(1, 10, 2):
+    print(i)</code></pre>
+      <pre><code>1
+3
+5
+7
+9</code></pre>
+
+      <h3>Example 4: Printing numbers in reverse order</h3>
+      <pre><code>for i in range(10, 0, -1):
+    print(i)</code></pre>
+      <p>This prints numbers from 10 down to 1.</p>
+
+      <h3>B. The <code>while</code> loop</h3>
+      <p>A <code>while</code> loop repeats a block of statements as long as the given condition is true.</p>
+      <pre><code>while condition:
+    statement(s)
+    increment_or_decrement</code></pre>
+      <p><strong>Example:</strong></p>
+      <pre><code>count = 1
+
+while count &lt; 5:
+    print(count)
+    count += 1</code></pre>
+      <p><strong>Output:</strong></p>
+      <pre><code>1
+2
+3
+4</code></pre>
+      <div class="tip"><strong>Important:</strong> Update the loop variable when necessary. Otherwise, the loop may run indefinitely.</div>
+    </section>
+
+    <section id="jump">
+      <h2>5. Jump Statements</h2>
+      <p>Jump statements change the normal flow of execution in a loop. This chapter covers <code>break</code> and <code>continue</code>.</p>
+
+      <h3>A. The <code>break</code> statement</h3>
+      <p>The <code>break</code> statement immediately terminates the loop, and program execution continues with the statement after the loop.</p>
+      <pre><code>for number in range(10):
+    if number == 5:
+        break
+    print(number)
+
+print("Out of loop")</code></pre>
+      <p><strong>Output:</strong></p>
+      <pre><code>0
+1
+2
+3
+4
+Out of loop</code></pre>
+
+      <h3>B. The <code>continue</code> statement</h3>
+      <p>The <code>continue</code> statement skips the remaining statements in the current iteration and moves to the next iteration of the loop.</p>
+      <pre><code>for number in range(6):
+    if number == 3:
+        continue
+    print(number)</code></pre>
+      <p><strong>Output:</strong></p>
+      <pre><code>0
+1
+2
+4
+5</code></pre>
+      <p>The number <code>3</code> is skipped, but the loop continues.</p>
+
+      <h3>Difference between <code>break</code> and <code>continue</code></h3>
+      <table>
+        <thead><tr><th><code>break</code></th><th><code>continue</code></th></tr></thead>
+        <tbody>
+          <tr><td>Terminates the loop completely.</td><td>Skips only the current iteration.</td></tr>
+          <tr><td>Control moves outside the loop.</td><td>Control moves to the next iteration.</td></tr>
+          <tr><td>Stops further iterations.</td><td>Further iterations continue.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="programs">
+      <h2>6. Important Programs for the Exam</h2>
+
+      <h3>Program 1: Check whether a number is even or odd</h3>
+      <pre><code>number = int(input("Enter an integer: "))
+
+if number % 2 == 0:
+    print("The number is even.")
+else:
+    print("The number is odd.")</code></pre>
+      <div class="callout"><strong>Remember:</strong> <code>%</code> is the modulus operator. It gives the remainder after division.</div>
+
+      <h3>Program 2: Find the sum of the first 10 natural numbers</h3>
+      <pre><code>total = 0
+
+for i in range(1, 11):
+    total += i
+
+print("Sum =", total)</code></pre>
+      <p><strong>Output:</strong></p>
+      <pre><code>Sum = 55</code></pre>
+
+      <h3>Program 3: Print odd numbers from 1 to 10</h3>
+      <pre><code>for i in range(1, 11, 2):
+    print(i)</code></pre>
+      <pre><code>1
+3
+5
+7
+9</code></pre>
+
+      <h3>Program 4: Check whether a number is divisible by 5</h3>
+      <pre><code>number = int(input("Enter a number: "))
+
+if number % 5 == 0:
+    print("Divisible by 5")
+else:
+    print("Not divisible by 5")</code></pre>
+
+      <h3>Program 5: Find the factorial of a number</h3>
+      <pre><code>n = 5
+factorial = 1
+
+for i in range(1, n + 1):
+    factorial *= i
+
+print("Factorial =", factorial)</code></pre>
+      <p><strong>Output:</strong></p>
+      <pre><code>Factorial = 120</code></pre>
+
+      <h3>Program 6: Print a number pattern</h3>
+      <pre><code>for i in range(1, 5):
+    print("3" * i)</code></pre>
+      <pre><code>3
+33
+333
+3333</code></pre>
+
+      <h3>Program 7: Print a decreasing star pattern</h3>
+      <pre><code>for i in range(10, 0, -1):
+    print("*" * i)</code></pre>
+      <p>This prints 10 stars in the first row, decreasing by one star in each subsequent row.</p>
+
+      <h3>Program 8: Temperature classification</h3>
+      <pre><code>temperature = int(input("Enter temperature in Celsius: "))
+
+if temperature &gt; 30:
+    print("It is hot outside.")
+elif temperature &gt; 20:
+    print("It is warm outside.")
+elif temperature &gt; 10:
+    print("It is cool outside.")
+else:
+    print("It is cold outside.")</code></pre>
+
+      <h3>Program 9: Ticket vending simulation</h3>
+      <ul>
+        <li>Age 10–20: ₹200</li>
+        <li>Age above 20 up to 60: ₹350</li>
+        <li>Age above 60: ₹300</li>
+      </ul>
+      <pre><code>age = int(input("Enter your age: "))
+
+if age &gt;= 10 and age &lt;= 20:
+    print("Ticket price is Rs. 200")
+elif age &gt; 20 and age &lt;= 60:
+    print("Ticket price is Rs. 350")
+elif age &gt; 60:
+    print("Ticket price is Rs. 300")
+else:
+    print("No need of ticket.")</code></pre>
+    </section>
+
+    <section id="syntax">
+      <h2>7. Important Syntax to Memorise</h2>
+      <table>
+        <thead><tr><th>Statement</th><th>Syntax</th></tr></thead>
+        <tbody>
+          <tr><td><code>if</code></td><td><code>if condition:</code></td></tr>
+          <tr><td><code>if-else</code></td><td><code>if condition:</code> followed by <code>else:</code></td></tr>
+          <tr><td><code>if-elif-else</code></td><td><code>if condition:</code>, one or more <code>elif</code> clauses and optional <code>else:</code></td></tr>
+          <tr><td><code>for</code> loop</td><td><code>for i in range(start, stop, step):</code></td></tr>
+          <tr><td><code>while</code> loop</td><td><code>while condition:</code></td></tr>
+          <tr><td><code>break</code></td><td><code>break</code></td></tr>
+          <tr><td><code>continue</code></td><td><code>continue</code></td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><strong>Python rule:</strong> Indentation is important. Statements belonging to an <code>if</code>, <code>else</code>, or loop block must be indented correctly.</div>
+    </section>
+
+    <section id="revision">
+      <h2>8. Quick Revision: Questions and Answers</h2>
+      <ol>
+        <li><strong>What is a control structure?</strong><br>A control structure is a programming construct that affects the flow of execution of a program.</li>
+        <li><strong>Name the three types of control structures.</strong><br>Sequential statements, selection statements, and iterative statements.</li>
+        <li><strong>What is a selection statement?</strong><br>A statement used to select which block of code executes based on a condition.</li>
+        <li><strong>What is a nested <code>if</code> statement?</strong><br>An <code>if</code> statement placed inside another <code>if</code> statement.</li>
+        <li><strong>What is an iterative statement?</strong><br>A statement that repeats a block of code based on a condition.</li>
+        <li><strong>Name the two types of loops in Python.</strong><br><code>for</code> loop and <code>while</code> loop.</li>
+        <li><strong>What is the purpose of the <code>range()</code> function?</strong><br>It generates a sequence of numbers for use in loops.</li>
+        <li><strong>Is the stop value included in <code>range()</code>?</strong><br>No. The stop value is excluded.</li>
+        <li><strong>What does the <code>break</code> statement do?</strong><br>It terminates the loop immediately.</li>
+        <li><strong>What does the <code>continue</code> statement do?</strong><br>It skips the remaining statements in the current iteration and moves to the next iteration.</li>
+        <li><strong>Which statement is used to evaluate multiple conditions?</strong><br>The <code>if-elif-else</code> statement.</li>
+        <li><strong>Which statement is generally used when the number of iterations is known in advance?</strong><br>The <code>for</code> loop.</li>
+      </ol>
+    </section>
+
+    <section id="quiz">
+      <h2>9. MCQ Practice</h2>
+      <p>Choose an answer for each question, then select <strong>Check answers</strong>.</p>
+      <form id="quiz-form">
+        <div class="question" data-answer="if statement" data-explanation="The if statement selects a block of code based on a condition.">
+          <p>1. Which of these is a selection statement?</p>
+          <div class="options">
+            <label><input type="radio" name="q1" value="for loop"> for loop</label>
+            <label><input type="radio" name="q1" value="while loop"> while loop</label>
+            <label><input type="radio" name="q1" value="if statement"> if statement</label>
+            <label><input type="radio" name="q1" value="continue"> continue</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="question" data-answer="2, 3, 4, 5" data-explanation="The stop value, 6, is excluded.">
+          <p>2. What is the output sequence of <code>range(2, 6)</code>?</p>
+          <div class="options">
+            <label><input type="radio" name="q2" value="2, 3, 4, 5, 6"> 2, 3, 4, 5, 6</label>
+            <label><input type="radio" name="q2" value="2, 3, 4, 5"> 2, 3, 4, 5</label>
+            <label><input type="radio" name="q2" value="0, 1, 2, 3, 4, 5"> 0, 1, 2, 3, 4, 5</label>
+            <label><input type="radio" name="q2" value="2, 6"> 2, 6</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="question" data-answer="break" data-explanation="break exits the loop immediately.">
+          <p>3. Which statement terminates a loop?</p>
+          <div class="options">
+            <label><input type="radio" name="q3" value="continue"> continue</label>
+            <label><input type="radio" name="q3" value="break"> break</label>
+            <label><input type="radio" name="q3" value="if"> if</label>
+            <label><input type="radio" name="q3" value="range"> range</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="question" data-answer="while" data-explanation="The while loop tests a condition before each iteration.">
+          <p>4. Which loop repeats while a condition is true?</p>
+          <div class="options">
+            <label><input type="radio" name="q4" value="if"> if</label>
+            <label><input type="radio" name="q4" value="if-else"> if-else</label>
+            <label><input type="radio" name="q4" value="while"> while</label>
+            <label><input type="radio" name="q4" value="break"> break</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="question" data-answer="1" data-explanation="7 divided by 2 leaves a remainder of 1.">
+          <p>5. What is the output of <code>7 % 2</code>?</p>
+          <div class="options">
+            <label><input type="radio" name="q5" value="0"> 0</label>
+            <label><input type="radio" name="q5" value="1"> 1</label>
+            <label><input type="radio" name="q5" value="2"> 2</label>
+            <label><input type="radio" name="q5" value="3"> 3</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="question" data-answer="continue" data-explanation="continue skips the remaining body of the current iteration.">
+          <p>6. Which statement skips the current loop iteration?</p>
+          <div class="options">
+            <label><input type="radio" name="q6" value="break"> break</label>
+            <label><input type="radio" name="q6" value="continue"> continue</label>
+            <label><input type="radio" name="q6" value="else"> else</label>
+            <label><input type="radio" name="q6" value="elif"> elif</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="question" data-answer="10" data-explanation="The numbers are 1, 2, 3 and 4; their sum is 10.">
+          <p>7. What is the sum of the numbers generated by <code>range(1, 5)</code>?</p>
+          <div class="options">
+            <label><input type="radio" name="q7" value="15"> 15</label>
+            <label><input type="radio" name="q7" value="10"> 10</label>
+            <label><input type="radio" name="q7" value="5"> 5</label>
+            <label><input type="radio" name="q7" value="4"> 4</label>
+          </div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="actions">
+          <button type="submit">Check answers</button>
+          <button type="reset" class="secondary">Try again</button>
+        </div>
+        <h3 id="score" aria-live="polite"></h3>
+      </form>
+    </section>
+
+    <section>
+      <h2>Final Exam Tip</h2>
+      <p>Give special attention to the differences between <code>if</code> and <code>if-else</code>, <code>for</code> and <code>while</code>, and <code>break</code> and <code>continue</code>. Practise tracing code and writing its output.</p>
+      <div class="actions">
+        <button onclick="window.print()">Print / Save as PDF</button>
+        <button class="secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Control Structures in Python · Exam revision notes</p>
+  </footer>
+
+  <script>
+    const quizForm = document.getElementById('quiz-form');
+    quizForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      let score = 0;
+      const questions = [...quizForm.querySelectorAll('.question')];
+
+      questions.forEach((question) => {
+        const selected = question.querySelector('input[type="radio"]:checked');
+        const feedback = question.querySelector('.feedback');
+        const correct = question.dataset.answer;
+        if (selected && selected.value === correct) {
+          score++;
+          feedback.textContent = 'Correct! ' + question.dataset.explanation;
+          feedback.className = 'feedback correct';
+        } else {
+          feedback.textContent = 'Incorrect. Correct answer: ' + correct + '. ' + question.dataset.explanation;
+          feedback.className = 'feedback incorrect';
+        }
+      });
+
+      document.getElementById('score').textContent =
+        'Your score: ' + score + ' / ' + questions.length;
+    });
+
+    quizForm.addEventListener('reset', function () {
+      setTimeout(() => {
+        quizForm.querySelectorAll('.feedback').forEach((feedback) => {
+          feedback.textContent = '';
+          feedback.className = 'feedback';
+        });
+        document.getElementById('score').textContent = '';
+      }, 0);
+    });
+  </script>
+</body>
+</html>

@@ -748,3 +748,20 @@ a {
 
     text-align: left;
 }
+
+
+/* HTML Viewer */
+
+.html-viewer {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 80vh;
+    height: 800px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
